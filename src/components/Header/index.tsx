@@ -8,16 +8,36 @@ import Logo from '../../assets/logo.svg';
 
 interface HeaderProps {
   size?: 'small' | 'large';
+  active?: string;
+  menu?: Menu[];
 }
 
-const Header: React.FC<HeaderProps> = ({ size = 'large' }: HeaderProps) => (
+interface Menu {
+  title: string;
+  url: string;
+}
+
+const Header: React.FC<HeaderProps> = ({
+  size = 'large',
+  active = '',
+  menu = [
+    { title: 'Listagem', url: '/' },
+    { title: 'Importar', url: 'import' },
+  ],
+}: HeaderProps) => (
   <Container size={size}>
     <header>
       <img src={Logo} alt="GoFinances" />
       <nav>
-        {
-          // Todo
-        }
+        {menu.map((menuItem) => (
+          <Link
+            key={menuItem.url}
+            to={menuItem.url}
+            className={menuItem.url === active ? 'active' : ''}
+          >
+            {menuItem.title}
+          </Link>
+        ))}
       </nav>
     </header>
   </Container>
