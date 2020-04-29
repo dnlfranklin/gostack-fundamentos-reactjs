@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import income from '../../assets/income.svg';
 import outcome from '../../assets/outcome.svg';
@@ -31,6 +32,7 @@ interface Balance {
 }
 
 const Dashboard: React.FC = () => {
+  const { pathname } = useLocation();
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [balance, setBalance] = useState<Balance>({
     income: '0',
@@ -72,7 +74,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <Header active="/" />
+      <Header active={pathname} />
       <Container>
         <CardContainer>
           <Card>

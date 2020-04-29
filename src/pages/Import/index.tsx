@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import filesize from 'filesize';
 
@@ -25,6 +25,7 @@ interface FileProps {
 }
 
 const Import: React.FC = () => {
+  const { pathname } = useLocation();
   const [uploadedFiles, setUploadedFiles] = useState<FileProps[]>([]);
   const [messageBlock, setMessageBlock] = useState('');
 
@@ -67,7 +68,7 @@ const Import: React.FC = () => {
 
   return (
     <>
-      <Header size="small" active="import" />
+      <Header size="small" active={pathname} />
       <Container>
         <Title>Importar uma transação</Title>
         {!!messageBlock && (

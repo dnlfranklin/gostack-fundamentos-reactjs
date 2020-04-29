@@ -22,7 +22,8 @@ const Header: React.FC<HeaderProps> = ({
   active = '',
   menu = [
     { title: 'Listagem', url: '/' },
-    { title: 'Importar', url: 'import' },
+    { title: 'Nova Transação', url: '/create' },
+    { title: 'Importar', url: '/import' },
   ],
 }: HeaderProps) => (
   <Container size={size}>
